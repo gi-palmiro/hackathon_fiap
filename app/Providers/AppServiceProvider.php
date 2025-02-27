@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Symfony\Component\HttpClient\HttpClient;
 use MailerSend\LaravelDriver\MailerSendTransport;
@@ -26,6 +27,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
+        Route::middleware('web')
+            ->group(base_path('routes/web.php'));
+
         $httpClient = Http::withOptions([
             'verify' => false,
         ]);

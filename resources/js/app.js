@@ -1,9 +1,6 @@
-import { Instagram, Linkedin } from 'lucide-react';
 document.addEventListener('alpine:init', () => {
-    // Definindo o store "flux"
-    Alpine.store('flux', {
+    Alpine.store('theme', {
         dark: localStorage.getItem('theme') === 'dark',
-
         toggle() {
             this.dark = !this.dark;
             localStorage.setItem('theme', this.dark ? 'dark' : 'light');
@@ -11,6 +8,6 @@ document.addEventListener('alpine:init', () => {
         }
     });
 
-    // Ao iniciar, aplica o tema de acordo com o localStorage
-    document.documentElement.classList.toggle('dark', Alpine.store('flux').dark);
+    console.log('Alpine: Carregado corretamente');
+    console.log('Store Inicial:', window.Alpine.store('theme'));
 });

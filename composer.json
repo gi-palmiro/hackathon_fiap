@@ -16,7 +16,8 @@
         "mailersend/laravel-driver": "^2.7",
         "nyholm/psr7": "^1.8",
         "railsware/mailtrap-php": "^2.1",
-        "symfony/http-client": "^7.2"
+        "symfony/http-client": "^7.2",
+        "ext-pdo": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

@@ -1,8 +1,21 @@
-@import '../../vendor/livewire/flux/dist/flux.css';
+/*@import '../../vendor/livewire/flux/dist/flux.css';*/
 @custom-variant dark (&:where(.dark, .dark *));
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+/*body {*/
+/*    background-color: white;*/
+/*    color: black;*/
+/*}*/
+
+
+/*.dark body {*/
+/*    background-color: #1f2937;*/
+/*    color: white;*/
+/*}*/
 
 
 footer {
