@@ -9,6 +9,8 @@ use App\Livewire\Auth\Passwords\Reset;
 use App\Livewire\Auth\Register;
 use App\Livewire\Auth\Verify;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TechNewsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +23,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome')->name('home');
+Route::view('/', 'blog.index')->name('home');
+Route::get('/', [TechNewsController::class, 'index'])->name('home');
+Route::get('news/{id}', [TechNewsController::class, 'show'])->name('news.show');
+Route::post('subscribe', [TechNewsController::class, 'subscribe'])->name('subscribe');
+// routes/web.php
+Route::view('/test-footer', 'components.footer');
+
 
 Route::middleware('guest')->group(function () {
     Route::get('login', Login::class)

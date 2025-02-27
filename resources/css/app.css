@@ -1,3 +1,17 @@
+@import '../../vendor/livewire/flux/dist/flux.css';
+@custom-variant dark (&:where(.dark, .dark *));
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+footer {
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F9F9F9; /* Exemplo de cor clara */
+    color: #71717A; /* Exemplo de cor de texto */
+    padding: 20px;
+}

@@ -5,20 +5,24 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Arr;
+use MailerSend\LaravelDriver\MailerSendTrait;
+
 
 class ConfirmMail extends Mailable
 {
-    use Queueable, SerializesModels;
-
+    use Queueable, SerializesModels, MailerSendTrait;
+    public $name;
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($name)
     {
-        //
+        $this->name = $name;
     }
 
     /**
@@ -27,7 +31,11 @@ class ConfirmMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Confirm Mail',
+            from: new Address(
+                env('MAIL_FROM_ADDRESS', 'noreply@seudominio.com'),
+                env('MAIL_FROM_NAME', 'Seu Nome')
+            ),
+            subject: 'Bem-vindo à Newsletter do Shift.io Blog'
         );
     }
 
@@ -36,8 +44,15 @@ class ConfirmMail extends Mailable
      */
     public function content(): Content
     {
+        $to = Arr::get($this->to, '0.address');
+        $this->mailersend(
+            template_id: null,
+            precedenceBulkHeader: false,
+            sendAt: null
+        );
+
         return new Content(
-            view: 'view.name',
+            view: 'mail.confirm-email'
         );
     }
 

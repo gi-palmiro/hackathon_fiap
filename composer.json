@@ -7,10 +7,13 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "guzzlehttp/guzzle": "^7.9",
         "laravel-frontend-presets/tall": "^8.0",
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
+        "livewire/flux": "^2.0",
         "livewire/livewire": "^3.5",
+        "mailersend/laravel-driver": "^2.7",
         "nyholm/psr7": "^1.8",
         "railsware/mailtrap-php": "^2.1",
         "symfony/http-client": "^7.2"
